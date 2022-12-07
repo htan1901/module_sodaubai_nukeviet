@@ -1,0 +1,49 @@
+.functions-section {
+	width: 100%;
+	height: 150px;
+}
+
+.functions-section form {
+	display: block;
+}
+
+.filter-section {
+	width: 60%;
+	height: 100%;
+}
+
+.export-to-file {
+	width: 30%;
+	height: 100%;
+}
+
+#so_dau_bai {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#so_dau_bai td,
+#so_dau_bai th {
+	border: 1px solid #ddd;
+}
+
+#so_dau_bai tr {
+	text-align: left;
+}
+/* 
+#so_dau_bai tr:hover {
+	background-color: #bbe4e4;
+} */
+
+#so_dau_bai th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: center;
+	background-color: #4CAF50;
+	color: white;
+}
+
+/* #so_dau_bai th:hover {
+	background-color: #0da203;
+	cursor: pointer;
+} */

@@ -1,0 +1,37 @@
+.class_block {
+	margin: 20px 0 20px 0;
+}
+
+.class_form {
+	display: inline; 
+	margin: 0 10px 0 10px;
+}
+
+.button {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #4caf9d;
+	border: none;
+	color: black;
+	text-align: center;
+	font-size: 17px;
+	width: 70px;
+	height: 30px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	border: 2px solid black;
+	color: aliceblue;
+}
+
+.main-class-button {
+	background-color: #f4511e;
+}
+
+.teaching-class-button {
+	background-color: #087E8B;
+}
+
+.button:hover {
+	opacity: 0.5;
+}
