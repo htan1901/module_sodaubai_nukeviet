@@ -30,11 +30,11 @@
 	</div>
 
 	<!-- BEGIN: functions -->
-	<div class="functions-section">
+	<div class="functions-section" style="height: 50px">
 		<!-- BEGIN: filter -->
 		<form action="{URL_ACTION}" method="post" class="filter-section" 
 		style="width: 60%;
-					height: 100%;
+					height: 50%;
 					display: inline;
 					float: left;">
 					
@@ -48,7 +48,7 @@
 			<select name="week">
 				<option value="" selected disabled> Chọn tuần</option>
 				<!-- BEGIN: week_filter -->
-				<option value="{week.tuan}"> {week.tuan} </option>
+				<option value="{week.tuan}">Tuan {week.tuan} (Tu:{from_date} - Den:{to_date}) </option>
 				<!-- END: week_filter -->
 			</select>
 
@@ -57,7 +57,7 @@
 		<!-- END: filter -->
 
 		<form action="get" class="export-to-file" style="width: 30%;
-								height: 100%;
+								height: 50%;
 								display: inline;
 								float: left;">
 						<button>
@@ -70,9 +70,8 @@
 	<!-- END: functions -->
 
 	<div style="width: 100%; margin: 10px 0 10px 0;">
-		<br>
 		<p class="title" style="font-weight: 600; text-align: center;">
-			<br><span>Tuần</span>
+			<span>Tuần</span>
 		</p>
 	</div>
 
@@ -117,7 +116,7 @@
 								src="{NV_BASE_SITEURL}themes/default/images/icons/edit.png" alt=""
 								style="width: 100%; height: 100%;">
 						</span>
-						<button title="edit" class="button_remove" onclick="return remove({num});">
+						<button name="remove" title="edit" class="button_remove" onclick="return remove({num});">
 							<img
 								src="{NV_BASE_SITEURL}themes/default/images/icons/delete.png" alt=""
 								style="width: 100%; height: 100%;">
@@ -131,7 +130,7 @@
 					<td class="table_col">
 						<textarea name="nhanxet" readonly class="textarea_nhanxet">{subject.nhan_xet}</textarea>
 					</td>
-					<td class="table_col">
+					<td class="table_col" style="width: 15%">
 						<input name="xeploai" readonly type="number" min="0" max="10" style="text-align: center" class="number_xeploai"
 							value="{subject.xep_loai}">
 					</td>

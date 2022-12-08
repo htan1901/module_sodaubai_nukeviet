@@ -54,11 +54,9 @@ if ($nv_Request->isset_request("save", 'post')) {
     
     $canEdit = 0;
     if($trangThai == 'on') {
-        // die("on");
         $canEdit = 1;
     }
     else {
-        // die("off");
         $canEdit = 0;
     }
 
@@ -87,11 +85,13 @@ foreach ($allYear as $row) {
     $xtpl->parse("main.functions.filter.year_filter");
 }
 
-$getAllWeekQuery = "SELECT DISTINCT tuan FROM " . NV_PREFIXLANG . '_' . $module_data . "_kehoachbaiday ";
+$getAllWeekQuery = "SELECT DISTINCT tuan  FROM " . NV_PREFIXLANG . '_' . $module_data . "_kehoachbaiday ";
 $allWeek = $db->query($getAllWeekQuery)->fetchAll();
 
 foreach ($allWeek as $row) {
     $xtpl->assign("week", $row);
+    $xtpl->assign("from_date", );
+    $xtpl->assign("to_date", );
     $xtpl->parse("main.functions.filter.week_filter");
 }
 
