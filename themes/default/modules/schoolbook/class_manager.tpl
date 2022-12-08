@@ -30,14 +30,13 @@
 	</div>
 
 	<!-- BEGIN: functions -->
-	<div class="functions-section" style="height: 50px">
+	<div class="functions-section" style="height: 40px">
 		<!-- BEGIN: filter -->
-		<form action="{URL_ACTION}" method="post" class="filter-section" 
-		style="width: 60%;
+		<form action="{URL_ACTION}" method="post" class="filter-section" style="width: 60%;
 					height: 50%;
 					display: inline;
 					float: left;">
-					
+
 			<select name="year">
 				<option value="" selected disabled> Chọn năm học</option>
 				<!-- BEGIN: year_filter -->
@@ -48,7 +47,7 @@
 			<select name="week">
 				<option value="" selected disabled> Chọn tuần</option>
 				<!-- BEGIN: week_filter -->
-				<option value="{week.tuan}">Tuan {week.tuan} (Tu:{from_date} - Den:{to_date}) </option>
+				<option value="{week.tuan}">Tuần {week.tuan} (Từ: {tu_ngay} - Đến: {den_ngay}) </option>
 				<!-- END: week_filter -->
 			</select>
 
@@ -56,22 +55,21 @@
 		</form>
 		<!-- END: filter -->
 
-		<form action="get" class="export-to-file" style="width: 30%;
+		<form action="post" class="export-to-file" style="width: 30%;
 								height: 50%;
 								display: inline;
-								float: left;">
-						<button>
-				<img src="{NV_BASE_SITEURL}themes/default/images/icons/icons8-microsoft-excel-2019-48.png" alt="export-to-excel"
-					style="width: 30px;">
+								float: right;">
+			<button name="add" >
+				<img src="{NV_BASE_SITEURL}themes/default/images/icons/add.png" alt="add"
+					style="width: 30px; float: right;">
 			</button>
-			Xuất Excel
 		</form>
 	</div>
 	<!-- END: functions -->
 
 	<div style="width: 100%; margin: 10px 0 10px 0;">
 		<p class="title" style="font-weight: 600; text-align: center;">
-			<span>Tuần</span>
+			<span>{tuan}</span>
 		</p>
 	</div>
 
@@ -87,7 +85,7 @@
 				<th class="table_col"> Nhận xét</th>
 				<th class="table_col"> Đánh giá </th>
 				<th class="table_col"> Ký tên </i></th>
-				<th class="table_col">{LANG.status}</th>
+				<th class="table_col"> Chỉnh sửa </th>
 			</tr>
 			<!-- BEGIN: subject_loop-->
 			<form action="{URL_ACTION}" method="post">
@@ -96,29 +94,26 @@
 						<input name="ma_mon_hoc" class="row_id" value="{subject.ma_mon_hoc}">
 					</td>
 					<td class="table_col" style="width: 10%;">
-						<span>{day_of_week}</span> 
+						<span>{day_of_week}</span>
 						<br>
-						<input type="date" name="ngay_day" class="input_ngayday" value="{subject.ngay_day}" readonly>
+						<input type="date" pattern="dd/MM/yyyy" name="ngay_day" class="input_ngayday"
+							value="{subject.ngay_day}" readonly>
 					</td>
 					<td class="table_col">
 						<button name="save" title="edit" class="button_save" hidden>
-							<img
-								src="{NV_BASE_SITEURL}themes/default/images/icons/check.png" alt=""
+							<img src="{NV_BASE_SITEURL}themes/default/images/icons/check.png" alt=""
 								style="width: 100%; height: 100%;">
 						</button>
 						<button title="cancel" class="button_cancel" onclick="cancel({num})" hidden>
-							<img
-								src="{NV_BASE_SITEURL}themes/default/images/icons/multiply.png" alt=""
+							<img src="{NV_BASE_SITEURL}themes/default/images/icons/multiply.png" alt=""
 								style="width: 100%; height: 100%;">
 						</button>
 						<span title="edit" class="button_edit span_button" onclick="edit({num})">
-							<img
-								src="{NV_BASE_SITEURL}themes/default/images/icons/edit.png" alt=""
+							<img src="{NV_BASE_SITEURL}themes/default/images/icons/edit.png" alt=""
 								style="width: 100%; height: 100%;">
 						</span>
 						<button name="remove" title="edit" class="button_remove" onclick="return remove({num});">
-							<img
-								src="{NV_BASE_SITEURL}themes/default/images/icons/delete.png" alt=""
+							<img src="{NV_BASE_SITEURL}themes/default/images/icons/delete.png" alt=""
 								style="width: 100%; height: 100%;">
 						</button>
 					</td>
@@ -131,8 +126,8 @@
 						<textarea name="nhanxet" readonly class="textarea_nhanxet">{subject.nhan_xet}</textarea>
 					</td>
 					<td class="table_col" style="width: 15%">
-						<input name="xeploai" readonly type="number" min="0" max="10" style="text-align: center" class="number_xeploai"
-							value="{subject.xep_loai}">
+						<input name="xeploai" readonly type="number" min="0" max="10" style="text-align: center"
+							class="number_xeploai" value="{subject.xep_loai}">
 					</td>
 					<td class="table_col">{subject.ho_ten}</td>
 					<td class="table_col">
@@ -145,7 +140,6 @@
 	</div>
 </div>
 <style>
-
 	.textarea_baihoc,
 	.textarea_nhanxet,
 	.number_xeploai,
@@ -159,7 +153,8 @@
 		width: 80%;
 	}
 
-	.span_button, button{
+	.span_button,
+	button {
 		margin: 0 5px 0 5px;
 		padding: 0;
 		display: inline-block;
@@ -170,7 +165,8 @@
 		border: none;
 	}
 
-	span:hover, button:hover {
+	span:hover,
+	button:hover {
 		opacity: 0.5;
 	}
 </style>
@@ -199,9 +195,9 @@
 	}
 
 	function remove(index) {
-		if (confirm("Ban co chac chan xoa khong?")) 
+		if (confirm("Bạn có chắc chắn muốn xóa không?"))
 			return true;
-				else
+		else
 			return false;
 	}
 

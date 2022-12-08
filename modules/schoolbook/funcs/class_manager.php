@@ -20,12 +20,19 @@ $_classId = $_GET['ma_lop'];
 
 $yearFilter = "";
 $weekFilter = -1;
+$tuanTitle = "Tất cả tuần";
 
+// kiem tra request them 
+if ($nv_Request->isset_request("add", 'post')) {
+    nv_redirect_location(NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&' . NV_NAME_VARIABLE . '=' . $module_name. '&amp;' . NV_OP_VARIABLE . '=add');
+}
 
 // kiem tra request loc
 if ($nv_Request->isset_request("filter", 'post')) {
     $yearFilter = $nv_Request->get_title('year', 'post', "");
     $weekFilter = $nv_Request->get_int('week', 'post', -1);
+
+    $tuanTitle = $weekFilter != -1? "Tuần " . $weekFilter:"Tất cả tuần";
 }
 
 // kiem tra request xoa 
@@ -85,13 +92,16 @@ foreach ($allYear as $row) {
     $xtpl->parse("main.functions.filter.year_filter");
 }
 
-$getAllWeekQuery = "SELECT DISTINCT tuan  FROM " . NV_PREFIXLANG . '_' . $module_data . "_kehoachbaiday ";
+$getAllWeekQuery = "SELECT DISTINCT tuan, tu_ngay, DATE_ADD(tu_ngay, INTERVAL 6 DAY) as den_ngay FROM " . NV_PREFIXLANG . '_' . $module_data . "_kehoachbaiday ";
 $allWeek = $db->query($getAllWeekQuery)->fetchAll();
 
 foreach ($allWeek as $row) {
     $xtpl->assign("week", $row);
-    $xtpl->assign("from_date", );
-    $xtpl->assign("to_date", );
+    $tuNgay =  date('d/m/Y', strtotime($row['tu_ngay']));
+    $denNgay =  date('d/m/Y', strtotime($row['den_ngay']));
+    $xtpl->assign("tu_ngay", $tuNgay);
+    $xtpl->assign("den_ngay", $denNgay);
+
     $xtpl->parse("main.functions.filter.week_filter");
 }
 
@@ -126,6 +136,7 @@ $getMainTeacherQuery = "SELECT * FROM " . NV_PREFIXLANG . '_' . $module_data . "
 $_mainTeacher = $db->query($getMainTeacherQuery)->fetchAll();
 
 $xtpl->assign("TEN_GVCN", $_mainTeacher[0]['ho_ten']);
+$xtpl->assign("tuan", $tuanTitle);
 
 // lay tat ca cac mon hoc thuoc lop
 $getAllSubjectsByClassQuery = "SELECT * FROM " . 

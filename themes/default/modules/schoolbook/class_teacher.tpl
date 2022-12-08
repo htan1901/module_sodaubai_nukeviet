@@ -30,11 +30,11 @@
 	</div>
 
 	<!-- BEGIN: functions -->
-	<div class="functions-section">
+	<div class="functions-section" style="height: 40px;">
 		<!-- BEGIN: filter -->
 		<form action="{URL_ACTION}" method="post" class="filter-section" 
 		style="width: 60%;
-					height: 100%;
+					height: 50%;
 					display: inline;
 					float: left;">
 					
@@ -48,31 +48,19 @@
 			<select name="week">
 				<option value="" selected disabled> Chọn tuần</option>
 				<!-- BEGIN: week_filter -->
-				<option value="{week.tuan}"> {week.tuan} </option>
+				<option value="{week.tuan}">Tuần {week.tuan} (Từ: {tu_ngay} - Đến: {den_ngay}) </option>
 				<!-- END: week_filter -->
 			</select>
 
 			<input type="submit" name="filter">
 		</form>
 		<!-- END: filter -->
-
-		<form action="get" class="export-to-file" style="width: 30%;
-								height: 100%;
-								display: inline;
-								float: left;">
-						<button>
-				<img src="{NV_BASE_SITEURL}themes/default/images/icons/icons8-microsoft-excel-2019-48.png" alt="export-to-excel"
-					style="width: 30px;">
-			</button>
-			Xuất Excel
-		</form>
 	</div>
 	<!-- END: functions -->
 
 	<div style="width: 100%; margin: 10px 0 10px 0;">
-		<br>
 		<p class="title" style="font-weight: 600; text-align: center;">
-			<br><span>Tuần</span>
+			<span>{tuan}</span>
 		</p>
 	</div>
 
