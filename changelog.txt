@@ -6,4 +6,10 @@ Sổ đầu bài:v1.0.00
 - Tối ưu hóa phân mềm
 - Sửa một vài lỗi
 
+Sổ đầu bài:v1.0.01
+- Thêm chức năng thêm sổ đầu bài
+- Xóa, sửa dữ liệu sổ đầu bài
+- Tối ưu hóa phân mềm
+- Sửa một vài lỗi
+
 Sổ đầu bài master: https://github.com/htan1901/module_sodaubai_nukeviet
