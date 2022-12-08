@@ -117,7 +117,7 @@
 								src="{NV_BASE_SITEURL}themes/default/images/icons/edit.png" alt=""
 								style="width: 100%; height: 100%;">
 						</span>
-						<button title="edit" class="button_remove" onclick="remove({num})">
+						<button title="edit" class="button_remove" onclick="return remove({num});">
 							<img
 								src="{NV_BASE_SITEURL}themes/default/images/icons/delete.png" alt=""
 								style="width: 100%; height: 100%;">
@@ -200,7 +200,10 @@
 	}
 
 	function remove(index) {
-
+		if (confirm("Ban co chac chan xoa khong?")) 
+			return true;
+				else
+			return false;
 	}
 
 	function changeToNormalState(index) {
