@@ -1,0 +1,9 @@
+Change Log: Sổ đầu bài
+Sổ đầu bài:v1.0.00
+- Thêm chức năng lọc sổ đầu bài theo tuần
+- Thêm chức năng lọc sổ đầu bài theo năm học
+- Xóa, sửa dữ liệu sổ đầu bài
+- Tối ưu hóa phân mềm
+- Sửa một vài lỗi
+
+Sổ đầu bài master: https://github.com/htan1901/module_sodaubai_nukeviet
