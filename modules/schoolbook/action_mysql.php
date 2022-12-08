@@ -2,10 +2,10 @@
 
 /**
  * @Project NUKEVIET 4.x
- * @Author 4FT 
+ * @Author 4FT
  * @Copyright (C) 2022 4FT. All rights reserved
  * @License GNU/GPL version 3 or any later version
- * @Createdate Wed, 12 Dec 2022 07:00:00 GMT+7
+ * @Createdate Mon, 3 Wed 2022 21:00:00 GMT
  */
 if (!defined('NV_IS_FILE_MODULES')) {
     exit('Stop!!!');
@@ -54,9 +54,12 @@ $sql_create_module[] = 'CREATE TABLE ' . $db_config['prefix'] . '_' . $lang . '_
 ) ENGINE=MyISAM";
 
 $sql_create_module[] = 'CREATE TABLE ' . $db_config['prefix'] . '_' . $lang . '_' . $module_data . "_kehoachbaiday (
+  id int AUTO_INCREMENT,
   ma_lop varchar(10) NOT NULL,
   ma_mon_hoc varchar(10) NOT NULL,
   ngay_day date NOT NULL,
+  tuan int NOT NULL,
+  tu_ngay date NOT NULL,
   tiet_bat_dau tinyint NOT NULL,
   bai_hoc varchar(200) NOT NULL,
   nhan_xet varchar(200) NOT NULL,
@@ -66,7 +69,7 @@ $sql_create_module[] = 'CREATE TABLE ' . $db_config['prefix'] . '_' . $lang . '_
   FOREIGN KEY (ma_lop) REFERENCES " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_lop(ma_lop),
   FOREIGN KEY (ma_mon_hoc) REFERENCES " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_monhoc(ma_mon_hoc),
   FOREIGN KEY (ma_giao_vien) REFERENCES " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_giaovien(ma_giao_vien),
-  PRIMARY KEY (ma_lop, ma_mon_hoc, ngay_day)
+  PRIMARY KEY (id)
 ) ENGINE=MyISAM";
  
 $sql_create_module[] = 'CREATE TABLE ' . $db_config['prefix'] . '_' . $lang . '_' . $module_data . "_taikhoan (
