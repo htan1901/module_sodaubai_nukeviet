@@ -65,7 +65,12 @@
 			</button>
 			Xuất Excel
 		</form>
-	</div>
+	</div style="width: 100%; margin: 10px 0 10px 0;">
+    <br>
+    <p class="title" style="font-weight: 600; text-align: center;">
+        <br><span>Tuần</span>
+    </p>
+</div>
     <!-- END: functions -->
 </div>
 <!-- END: main -->
