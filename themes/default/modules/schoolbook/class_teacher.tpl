@@ -1,5 +1,5 @@
-<!-- BEGIN: main -->
-<link rel="stylesheet" href="{NV_BASE_SITEURL}/themes/default/css/schoolbook_teacher.css">
+<!-- BEGIN: main  -->
+<link rel="stylesheet" href="{NV_BASE_SITEURL}themes/default/css/schoolbook_class.css">
 <div class="table-responsive" style="margin-bottom: 10%;background-color: azure;">
 	<div id="top">
 		<table style="width: 100%;">
@@ -55,6 +55,17 @@
 
 			<input type="submit">
 		</form>
+
+		<form action="get" class="export-to-file" style="width: 30%;
+								height: 100%;
+								display: inline;
+								float: left;">
+			<button>
+				<img src="{NV_BASE_SITEURL}themes/default/images/icons/icons8-microsoft-excel-2019-48.png" alt="export-to-excel"
+					style="width: 30px;">
+			</button>
+			Xuất Excel
+		</form>
 	</div>
 
 	<div style="width: 100%; margin: 10px 0 10px 0;">
@@ -64,7 +75,7 @@
 		</p>
 	</div>
 
-		<!-- BEGIN: schedule-->
+	<!-- BEGIN: schedule-->
 	<div style="width: 100%">
 		<table id="so_dau_bai" style="text-align: center;width: 100%;">
 			<tr class="table_row">
@@ -78,7 +89,7 @@
 				<th class="table_col"> Ký tên </i></th>
 			</tr>
 			<!-- BEGIN: subject_loop-->
-				<form action="{URL_ACTION}" method="post">
+			<form action="{URL_ACTION}" method="post">
 				<tr class="table_row">
 					<td hidden>
 						<input name="ma_mon_hoc" class="row_id" value="{subject.ma_mon_hoc}">
@@ -155,19 +166,82 @@
 	}
 </style>
 <!-- END: schedule-->
+<!-- BEGIN: script -->
+<script>
+	var editButtons = document.getElementsByClassName('button_edit');
+	var cancelButtons = document.getElementsByClassName('button_cancel');
+	var saveButtons = document.getElementsByClassName('button_save');
+	var removeButtons = document.getElementsByClassName('button_remove');
+	var textAreaBaiHocs = document.getElementsByClassName('textarea_baihoc');
+	var rowIDs = document.getElementsByClassName('row_id');
+	var textAreaNhanXets = document.getElementsByClassName('textarea_nhanxet');
+	var numberXepLoais = document.getElementsByClassName('number_xeploai');
 
-	
-		
+	function edit(index) {
+		changeToEditState(index);
+	}
 
-	<!-- BEGIN: empty-->
-	<div>
-		<p style="text-align: center; margin: 20px 0 20px 0; font-size: large;">
-			{LANG.empty_responsible_title}
-		</p>
-	</div>
-	<!-- END: empty-->
-	<style>
+	function cancel(index) {
+		if (confirm("Bạn muốn hủy thay đổi!")) {
+			changeToNormalState(index);
+			return;
+		}
+	}
 
-	</style>
+	function changeToNormalState(index) {
+		// khong cho phep sua cac 
+		textAreaBaiHocs[index].readOnly = true;
+		textAreaNhanXets[index].readOnly = true;
+		numberXepLoais[index].readOnly = true;
+
+		// thay doi css cho de nhin
+		textAreaBaiHocs[index].style.backgroundColor = 'transparent';
+		textAreaBaiHocs[index].style.border = 'none';
+
+		textAreaNhanXets[index].style.backgroundColor = 'transparent';
+		textAreaNhanXets[index].style.border = 'none';
+
+		numberXepLoais[index].style.backgroundColor = 'transparent';
+		numberXepLoais[index].style.border = 'none';
+
+		// an nut huy va luu
+		cancelButtons[index].hidden = true;
+		saveButtons[index].hidden = true;
+		// hien thi nut chinh sua va xoa
+		editButtons[index].style.display = 'inline-block';
+		removeButtons[index].style.display = 'inline-block';
+	}
+
+	function changeToEditState(index) {
+		// cho phep sua cac truong 
+		textAreaBaiHocs[index].readOnly = false;
+		textAreaNhanXets[index].readOnly = false;
+		numberXepLoais[index].readOnly = false;
+
+		textAreaBaiHocs[index].focus();
+
+		// thay doi css cho de nhin
+		textAreaBaiHocs[index].style.backgroundColor = '#fff';
+		textAreaBaiHocs[index].style.border = '2px solid #ccc';
+		textAreaBaiHocs[index].style.borderRadius = '4px';
+
+		textAreaNhanXets[index].style.backgroundColor = '#fff';
+		textAreaNhanXets[index].style.border = '2px solid #ccc';
+		textAreaNhanXets[index].style.borderRadius = '4px';
+
+		numberXepLoais[index].style.backgroundColor = '#fff';
+		numberXepLoais[index].style.border = '2px solid #ccc';
+		numberXepLoais[index].style.borderRadius = '4px';
+
+		// hien thi nut huy va luu
+		cancelButtons[index].hidden = false;
+		saveButtons[index].hidden = false;
+
+		// an nut chinh sua va xoa TODO: fix
+		editButtons[index].style.display = 'none';
+		removeButtons[index].style.display = 'none';
+	}
+</script>
+<!-- END: script -->
 </div>
 <!-- END: main -->
