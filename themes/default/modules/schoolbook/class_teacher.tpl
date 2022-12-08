@@ -78,7 +78,47 @@
 				<th class="table_col"> Ký tên </i></th>
 			</tr>
 			<!-- BEGIN: subject_loop-->
-			
+				<form action="{URL_ACTION}" method="post">
+				<tr class="table_row">
+					<td hidden>
+						<input name="ma_mon_hoc" class="row_id" value="{subject.ma_mon_hoc}">
+					</td>
+					<td class="table_col" style="width: 10%;">
+						<span>{day_of_week}</span>
+						<br>
+						<input type="date" name="ngay_day" class="input_ngayday" value="{subject.ngay_day}" readonly>
+					</td>
+					<td class="table_col">
+						<p {hidden}>
+							<button name="save" title="edit" class="button_save" hidden>
+								<img src="{NV_BASE_SITEURL}themes/default/images/icons/check.png" style="width: 100%; height: 100%;">
+							</button>
+							<button title="cancel" class="button_cancel" onclick="cancel({num})" hidden>
+								<img src="{NV_BASE_SITEURL}themes/default/images/icons/multiply.png" style="width: 100%; height: 100%;">
+							</button>
+							<span title="edit" class="button_edit span_button" onclick="edit({num})">
+								<img src="{NV_BASE_SITEURL}themes/default/images/icons/edit.png" style="width: 100%; height: 100%;">
+							</span>
+							<button title="edit" class="button_remove" onclick="">
+								<img src="{NV_BASE_SITEURL}themes/default/images/icons/delete.png" style="width: 100%; height: 100%;">
+							</button>
+						</p>
+					</td>
+					<td class="table_col">{subject.tiet_bat_dau}</td>
+					<td class="table_col">{subject.ten_mon_hoc}</td>
+					<td class="table_col">
+						<textarea name="textarea_baihoc" readonly class="textarea_baihoc">{subject.bai_hoc}</textarea>
+					</td>
+					<td class="table_col">
+						<textarea name="textarea_nhanxet" readonly class="textarea_nhanxet">{subject.nhan_xet}</textarea>
+					</td>
+					<td class="table_col">
+						<input name="number_xeploai" readonly type="number" min="0" max="10" style="text-align: center"
+							class="number_xeploai" value="{subject.xep_loai}">
+					</td>
+					<td class="table_col">{subject.ho_ten}</td>
+				</tr>
+			</form>
 			<!-- END: subject_loop-->
 		</table>
 	</div>
