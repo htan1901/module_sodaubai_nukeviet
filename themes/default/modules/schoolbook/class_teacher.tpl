@@ -69,7 +69,6 @@
 	</div>
 	<!-- END: functions -->
 
-
 	<div style="width: 100%; margin: 10px 0 10px 0;">
 		<br>
 		<p class="title" style="font-weight: 600; text-align: center;">
@@ -112,9 +111,6 @@
 							<span title="edit" class="button_edit span_button" onclick="edit({num})">
 								<img src="{NV_BASE_SITEURL}themes/default/images/icons/edit.png" style="width: 100%; height: 100%;">
 							</span>
-							<button title="edit" class="button_remove" onclick="">
-								<img src="{NV_BASE_SITEURL}themes/default/images/icons/delete.png" style="width: 100%; height: 100%;">
-							</button>
 						</p>
 					</td>
 					<td class="table_col">{subject.tiet_bat_dau}</td>
@@ -137,6 +133,7 @@
 	</div>
 </div>
 <style>
+	
 	.textarea_baihoc,
 	.textarea_nhanxet,
 	.number_xeploai,
@@ -166,6 +163,7 @@
 	button:hover {
 		opacity: 0.5;
 	}
+
 </style>
 <!-- END: schedule-->
 <!-- BEGIN: script -->
