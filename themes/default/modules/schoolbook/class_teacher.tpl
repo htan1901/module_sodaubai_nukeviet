@@ -2,76 +2,122 @@
 <link rel="stylesheet" href="{NV_BASE_SITEURL}/themes/default/css/schoolbook_teacher.css">
 <div class="table-responsive" style="margin-bottom: 10%;background-color: azure;">
 	<div id="top">
-
-		<table style="width:100%;">
+		<table style="width: 100%;">
 			<tr>
 				<td>
-					<p> <b>{LANG.full_name}: </b>{HOTEN}</pơ>
+					<p> <b>{LANG.full_name}</b>{HOTEN}</p>
 				</td>
 				<td>
-					<p> <b>{LANG.role}: </b>{VAITRO}</p>
+					<p> <b>{LANG.role}</b>{VAITRO}</p>
 				</td>
-
 			</tr>
+
 			<tr>
 				<td>
-					<a> <b>{LANG.school}: </b>{TRUONG}</a>
+					<p> <b>{LANG.school}</b>{TRUONG}</p>
 				</td>
 				<td>
-					<a> <b>{LANG.timestamp}: </b>{PHIEN}</a>
+					<p> <b>{LANG.timestamp}</b>{PHIEN}</p>
 				</td>
 			</tr>
 		</table>
+	</div>
 
-		<p style="text-align: center; font-size: x-large; font-weight: bold; margin: 20px 0 20px 0;">
-			{LANG.responsible_title}
+	<div style="text-align: center; width: 100%;">
+		<p><b>{LANG.class}: </b>{LOP}</p>
+		<p><b>{LANG.gvcn}: </b>{TEN_GVCN}</p>
+		<br>
+	</div>
+
+	<div class="functions-section">
+		<form action="get" class="filter-section" style="width: 60%;
+					height: 100%;
+					display: inline;
+					float: left;">
+			<select>
+				<option value="" selected disabled> Chọn năm học</option>
+				<option value=""> Năm x </option>
+				<option value=""> Năm y </option>
+			</select>
+
+			<select>
+				<option value="" selected disabled> Chọn học kỳ</option>
+				<option value=""> HK I </option>
+				<option value=""> HK II </option>
+			</select>
+
+			<select>
+				<option value="" selected disabled> Chọn tuần</option>
+				<option value=""> Tuan x </option>
+				<option value=""> Tuan y </option>
+				<option value=""> Tuan z </option>
+			</select>
+
+			<input type="submit">
+		</form>
+	</div>
+
+	<div style="width: 100%; margin: 10px 0 10px 0;">
+		<br>
+		<p class="title" style="font-weight: 600; text-align: center;">
+			<br><span>Tuần</span>
 		</p>
 	</div>
 
-	<div>
-		<!-- BEGIN: main_class -->
-		<div class="class_block">
-			<label>{LANG.main_class}</label><br>
-			<div style="margin: 0 10px 0 10px;">
-				<form action="{URL_ACTION}" method="get" class="class_form" 
-				style="display: inline; margin: 0 10px 0 10px;">
-					<input type="hidden" name="ma_lop" value="{MA_LOP}">
-					<input type="submit" name="lop" value="{TEN_LCN}" class="button main-class-button">
-			</div>
-			</form>
-		</div>
-		<!-- END: main_class -->
-
-		<!-- BEGIN: teaching_class -->
-		<div class="class_block">
-			<label>{LANG.teaching_class}</label><br>
-			<div style="margin: 0 10px 0 10px;">
-				<!-- BEGIN: teaching_loop -->
-				<form action="{URL_ACTION}" method="get" class="class_form" 
-				style="display: inline; margin: 0 10px 0 10px;">
-					<input type="hidden" name="ma_lop" value="{teaching_row.ma_lop}">
-					<input type="submit" name="lop" value="{teaching_row.ten_lop}" class="button teaching-class-button">
-				</form>
-				<!-- END: teaching_loop -->
-			</div>
-		</div>
-		<!-- END: teaching_class -->
-
-		<!-- BEGIN: manage_class -->
-		<div class="class_block">
-			<label>{LANG.manage_class}</label><br>
-			<div style="margin: 0 10px 0 10px;">
-				<!-- BEGIN: manage_loop -->
-				<form action="{URL_ACTION}" method="get" class="class_form" 
-				style="display: inline; margin: 0 10px 0 10px;">
-					<input type="hidden" name="ma_lop" value="{manage_row.ma_lop}">
-					<input type="submit" name="lop" value="{manage_row.ten_lop}" class="button">
-				</form>
-				<!-- END: manage_loop -->
-			</div>
-		</div>
-		<!-- END: manage_class -->
+		<!-- BEGIN: schedule-->
+	<div style="width: 100%">
+		<table id="so_dau_bai" style="text-align: center;width: 100%;">
+			<tr class="table_row">
+				<th class="table_col"> Thứ / Ngày</th>
+				<th class="table_col"> Đặc quyền </th>
+				<th class="table_col"> Tiết </th>
+				<th class="table_col"> Môn học </th>
+				<th class="table_col"> Bài học </th>
+				<th class="table_col"> Nhận xét</th>
+				<th class="table_col"> Đánh giá </th>
+				<th class="table_col"> Ký tên </i></th>
+			</tr>
+			<!-- BEGIN: subject_loop-->
+			
+			<!-- END: subject_loop-->
+		</table>
 	</div>
+</div>
+<style>
+	.textarea_baihoc,
+	.textarea_nhanxet,
+	.number_xeploai,
+	.input_ngayday {
+		resize: none;
+		background-color: transparent;
+		border: none;
+	}
+
+	.input_ngayday {
+		width: 80%;
+	}
+
+	.span_button,
+	button {
+		display: inline-block;
+		margin: 0 5px 0 5px;
+		padding: 0;
+		width: 25px;
+		height: 25px;
+		cursor: pointer;
+		background-color: transparent;
+		border: none;
+	}
+
+	span:hover,
+	button:hover {
+		opacity: 0.5;
+	}
+</style>
+<!-- END: schedule-->
+
+	
+		
 
 	<!-- BEGIN: empty-->
 	<div>
