@@ -3,6 +3,7 @@ Với sự bùng nổ về công nghệ thông tin, các công tác quản lý c
 
 ## Thành viên thực hiện
 **Tên trường:** Trường Đại học công nghệ TP.HCM
+
 **Thành viên thực hiện đề tài:**
 - Nguyễn Xuân Nhân
 - Danh Hoàng Tân
