@@ -2,10 +2,10 @@
 
 /**
  * @Project NUKEVIET 4.x
- * @Author 4FT 
+ * @Author 4FT
  * @Copyright (C) 2022 4FT. All rights reserved
  * @License GNU/GPL version 3 or any later version
- * @Createdate Wed, 12 Dec 2022 07:00:00 GMT+7
+ * @Createdate Mon, 3 Wed 2022 21:00:00 GMT
  */
 
 if (!defined('NV_IS_MOD_SCHOOLBOOK')) die('Stop!!!');
@@ -17,7 +17,10 @@ $xtpl->assign( 'LANG', $lang_module );
 
 // bat lenh chuyen trang
 if($nv_Request->isset_request('lop', 'get')) {
-    nv_redirect_location(NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&' . NV_NAME_VARIABLE . '=' . $module_name. '&amp;' . NV_OP_VARIABLE . '=class&' . 'lop=' . $nv_Request->get_title('lop', 'get') . '&ma_lop=' . $nv_Request->get_title('ma_lop', 'get'));
+    if ($_SESSION['vai_tro'] == '0')
+        nv_redirect_location(NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&' . NV_NAME_VARIABLE . '=' . $module_name. '&amp;' . NV_OP_VARIABLE . '=class_manager&' . 'lop=' . $nv_Request->get_title('lop', 'get') . '&ma_lop=' . $nv_Request->get_title('ma_lop', 'get'));
+    else
+    nv_redirect_location(NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&' . NV_NAME_VARIABLE . '=' . $module_name. '&amp;' . NV_OP_VARIABLE . '=class_teacher&' . 'lop=' . $nv_Request->get_title('lop', 'get') . '&ma_lop=' . $nv_Request->get_title('ma_lop', 'get'));
 }
 
 // lay username tu session
@@ -56,7 +59,7 @@ if (!empty($_mainClassData[0])) {
 }
 
 // lay danh sach lop giang day
-$getTeachingClassQuery = "SELECT l.ma_lop, l.ten_lop, l.nam_hoc FROM " . NV_PREFIXLANG . '_' . $module_data . "_kehoachbaiday k, " . NV_PREFIXLANG . '_' . $module_data . '_lop l ' . "WHERE k.ma_lop = l.ma_lop AND ma_giao_vien = '" . $_SESSION['ma_giao_vien'] . "'"; 
+$getTeachingClassQuery = "SELECT DISTINCT l.ma_lop, l.ten_lop, l.nam_hoc FROM " . NV_PREFIXLANG . '_' . $module_data . "_kehoachbaiday k, " . NV_PREFIXLANG . '_' . $module_data . '_lop l ' . "WHERE k.ma_lop = l.ma_lop AND ma_giao_vien = '" . $_SESSION['ma_giao_vien'] . "'"; 
 $_teachingClassData = $db->query($getTeachingClassQuery)->fetchAll();
 
 if (!empty($_teachingClassData)) {
