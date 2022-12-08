@@ -58,6 +58,10 @@ Truy cập `localhost/{tên folder chứa nuke viet}` để có thể cài đặ
 
 Truy cập phpmyadmin bằng địa chỉ `localhostphpmyadmin/`
 
+# Hướng dẫn sử dụng
+
+Xem hướng dẫn sử dụng tại [Hướng dẫn sử dụng](https://github.com/htan1901/module_sodaubai_nukeviet/wiki)
+
 # LICENSE
 
-GPLv3.0
+See [LICENSE](LICENSE) file for more information.
