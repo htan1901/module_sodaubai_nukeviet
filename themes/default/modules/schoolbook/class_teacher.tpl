@@ -29,44 +29,46 @@
 		<br>
 	</div>
 
+	<!-- BEGIN: functions -->
 	<div class="functions-section">
-		<form action="get" class="filter-section" style="width: 60%;
+		<!-- BEGIN: filter -->
+		<form action="{URL_ACTION}" method="post" class="filter-section" 
+		style="width: 60%;
 					height: 100%;
 					display: inline;
 					float: left;">
-			<select>
+					
+			<select name="year">
 				<option value="" selected disabled> Chọn năm học</option>
-				<option value=""> Năm x </option>
-				<option value=""> Năm y </option>
+				<!-- BEGIN: year_filter -->
+				<option value="{year.nam_hoc}">{year.nam_hoc}</option>
+				<!-- END: year_filter -->
 			</select>
 
-			<select>
-				<option value="" selected disabled> Chọn học kỳ</option>
-				<option value=""> HK I </option>
-				<option value=""> HK II </option>
-			</select>
-
-			<select>
+			<select name="week">
 				<option value="" selected disabled> Chọn tuần</option>
-				<option value=""> Tuan x </option>
-				<option value=""> Tuan y </option>
-				<option value=""> Tuan z </option>
+				<!-- BEGIN: week_filter -->
+				<option value="{week.tuan}"> {week.tuan} </option>
+				<!-- END: week_filter -->
 			</select>
 
-			<input type="submit">
+			<input type="submit" name="filter">
 		</form>
+		<!-- END: filter -->
 
 		<form action="get" class="export-to-file" style="width: 30%;
 								height: 100%;
 								display: inline;
 								float: left;">
-			<button>
+						<button>
 				<img src="{NV_BASE_SITEURL}themes/default/images/icons/icons8-microsoft-excel-2019-48.png" alt="export-to-excel"
 					style="width: 30px;">
 			</button>
 			Xuất Excel
 		</form>
 	</div>
+	<!-- END: functions -->
+
 
 	<div style="width: 100%; margin: 10px 0 10px 0;">
 		<br>
@@ -100,7 +102,7 @@
 						<input type="date" name="ngay_day" class="input_ngayday" value="{subject.ngay_day}" readonly>
 					</td>
 					<td class="table_col">
-						<p {hidden}>
+						<p {hidden_bystatus} {hidden_byperson}>
 							<button name="save" title="edit" class="button_save" hidden>
 								<img src="{NV_BASE_SITEURL}themes/default/images/icons/check.png" style="width: 100%; height: 100%;">
 							</button>
@@ -171,7 +173,6 @@
 	var editButtons = document.getElementsByClassName('button_edit');
 	var cancelButtons = document.getElementsByClassName('button_cancel');
 	var saveButtons = document.getElementsByClassName('button_save');
-	var removeButtons = document.getElementsByClassName('button_remove');
 	var textAreaBaiHocs = document.getElementsByClassName('textarea_baihoc');
 	var rowIDs = document.getElementsByClassName('row_id');
 	var textAreaNhanXets = document.getElementsByClassName('textarea_nhanxet');
@@ -209,7 +210,6 @@
 		saveButtons[index].hidden = true;
 		// hien thi nut chinh sua va xoa
 		editButtons[index].style.display = 'inline-block';
-		removeButtons[index].style.display = 'inline-block';
 	}
 
 	function changeToEditState(index) {
@@ -237,9 +237,8 @@
 		cancelButtons[index].hidden = false;
 		saveButtons[index].hidden = false;
 
-		// an nut chinh sua va xoa TODO: fix
+		// an nut chinh sua va xoa TODO: fix 
 		editButtons[index].style.display = 'none';
-		removeButtons[index].style.display = 'none';
 	}
 </script>
 <!-- END: script -->
